@@ -2,7 +2,14 @@
   "name": "Bamazon",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "BamazonCustomer.js",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "inquirer": "^6.0.0",
+    "mysql": "^2.15.0",
+    "sql": "^0.78.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,8 +23,5 @@
   "bugs": {
     "url": "https://github.com/codingbc/Bamazon/issues"
   },
-  "homepage": "https://github.com/codingbc/Bamazon#readme",
-  "dependencies": {
-    "sql": "^0.78.0"
-  }
+  "homepage": "https://github.com/codingbc/Bamazon#readme"
 }

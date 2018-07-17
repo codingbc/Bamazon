@@ -1,43 +1,40 @@
-CREATE DATABASE Bamazon;
+CREATE DATABASE bamazon_db;
 
-USE Bamazon;
+USE bamazon_db;
 
-CREATE TABLE Products(
-    ItemID MEDIUMINT AUTO_INCREMENT NOT NULL,
-    ProductName VARCHAR(100) NOT NULL,
-    DepartmentName VARCHAR(50) NOT NULL,
-    Price DECIMAL(10,2) NOT NULL,
-    StockQuantity INT(10) NOT NULL,
-    primary key(ItemID)
+CREATE TABLE products (
+	item_id INTEGER (10) AUTO_INCREMENT NOT NULL,
+	product_name VARCHAR (250) NOT NULL,
+	department_name VARCHAR (250),
+	price DECIMAL(10,2) NOT NULL,
+	stock_quantity INTEGER (10) NOT NULL,
+	product_sales DECIMAL (10,2) DEFAULT 0.00,
+	PRIMARY KEY (item_id)
 );
 
-select * from Products;
+INSERT INTO products (product_name, department_name, price, stock_quantity, product_sales)
+VALUES ("Binder Clips (pkg. of 20)", "Office Supplies", "12.00", "50", "0.00"),
+	   ("Coffee Mug", "Household Items", "15.00", "100", "0.00"),
+	   ("100-Piece Puzzle", "Toys and Games", "9.00", "25", "0.00"),
+	   ("Dasani Water Bottles (pkg. of 25)", "Groceries", "32.00", "75", "0.00"),
+	   ("Dyson Vacuum Cleaner", "Household Items", "340.00", "14", "0.00"),
+	   ("Pitch Perfect", "Media", "19.99", "87", "0.00"),
+	   ("Starbucks K-Cups (pkg. of 20)", "Groceries", "7.50", "111", "0.00"),
+	   ("Black Sharpie", "Office Supplies", "2.50", "200", "0.00"),
+	   ("Scrabble", "Toys and Games", "13.50", "26", "0.00"),
+	   ("End Table", "Household Items", "139.99", "19", "0.00");
 
-INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
-VALUES ("Uncharted 4","ENTERTAINMENT",49.95,150),
-    ("DOOM","ENTERTAINMENT",59.99,200),
-    ("Crate of Spam","GROCERY",24.50,50),
-    ("Cool Shades","CLOTHING",75.00,5),
-    ("Worn Denim Jeans","CLOTHING",54.25,35),
-    ("Survival Towel","SPORTS & OUTDOORS",42.42,42),
-    ("Bill and Ted's Excellent Adventure","ENTERTAINMENT",15.00,25),
-    ("Mad Max: Fury Road","ENTERTAINMENT",25.50,57),
-    ("Monopoly","ENTERTAINMENT",30.50,35),
-    ("Yahtzee","ENTERTAINMENT",19.95,23);
+CREATE TABLE departments (
+	department_id INTEGER (10) AUTO_INCREMENT NOT NULL,
+	department_name VARCHAR (250) NOT NULL,
+	over_head_costs DECIMAL (10,2) NOT NULL,
+	total_sales DECIMAL (10,2),
+	PRIMARY KEY (department_id)
+);
 
-CREATE TABLE Departments(
-    DepartmentID MEDIUMINT AUTO_INCREMENT NOT NULL,
-    DepartmentName VARCHAR(50) NOT NULL,
-    OverHeadCosts DECIMAL(10,2) NOT NULL,
-    TotalSales DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(DepartmentID));
-
-INSERT INTO Departments(DepartmentName, OverHeadCosts, TotalSales)
-VALUES ('ENTERTAINMENT', 50000.00, 15000.00),
-    ('ELECTRONICS', 20000.00, 12000.00),
-    ('HOME', 30000.00, 15000.00),
-    ('BODY & HEALTH', 3000.00, 12000.00),
-    ('GROCERY', 1200.00, 15000.00),
-    ('KIDS', 40000.00, 12000.00),
-    ('CLOTHING', 35000.00, 15000.00),
-    ('SPORTS & OUTDOORS', 12000.00, 12000.00);
+INSERT INTO departments (department_name, over_head_costs, total_sales)
+VALUES ("Office Supplies", "100.50", "0.00"),
+	   ("Household Items", "60.00", "0.00"),
+	   ("Toys and Games", "50.00", "0.00"),
+	   ("Groceries", "80.00", "0.00"),
+	   ("Media", "66.00", "0.00");
